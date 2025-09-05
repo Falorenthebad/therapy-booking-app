@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% block title %}Mindful Therapy | Confirmation{% endblock %}
+
+{% block content %}
+<section class="py-12">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-lg shadow p-6">
+      <div class="flex items-center mb-4">
+        <i data-feather="check-circle" class="text-green-600 mr-2"></i>
+        <h1 class="text-2xl font-bold">Appointment Confirmed</h1>
+      </div>
+      <p class="text-gray-700 mb-6">
+        Thank you, <span class="font-semibold">{{ appt.first_name }} {{ appt.last_name }}</span>.
+        Your session has been scheduled.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-6">
+        <div class="p-4 border rounded">
+          <div class="text-gray-500 text-sm">Date</div>
+          <div class="text-gray-900 font-medium">{{ appt.start_datetime|date:"l, F j, Y" }}</div>
+        </div>
+        <div class="p-4 border rounded">
+          <div class="text-gray-500 text-sm">Time</div>
+          <div class="text-gray-900 font-medium">
+            {{ appt.start_datetime|date:"H:i" }} - {{ end_dt|date:"H:i" }}
+          </div>
+        </div>
+        <div class="p-4 border rounded">
+          <div class="text-gray-500 text-sm">Type of Therapy</div>
+          <div class="text-gray-900 font-medium">{{ appt.get_therapy_type_display }}</div>
+        </div>
+        <div class="p-4 border rounded">
+          <div class="text-gray-500 text-sm">Session Format</div>
+          <div class="text-gray-900 font-medium">{{ appt.get_session_format_display }}</div>
+        </div>
+
+        {% if show_code %}
+        <div class="p-4 border rounded md:col-span-2">
+          <div class="text-gray-500 text-sm">Reference Code (save this now)</div>
+          <div class="text-gray-900 font-mono">{{ appt.cancel_code }}</div>
+          <p class="text-sm text-gray-500 mt-1">This code will not be shown again. Please store it safely.</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="{% url 'appointments' %}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">View My Appointment</a>
+        <a href="{% url 'cancel' appt.cancel_code %}" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">Cancel</a>
+        <a href="{% url 'home' %}" class="px-4 py-2 rounded-md border hover:bg-gray-50 transition">Home</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

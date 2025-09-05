@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% block title %}Mindful Therapy | Home{% endblock %}
+{% block nav_home %}border-b-2 border-indigo-500 text-indigo-600{% endblock %}
+
+{% block content %}
+<section class="hero-gradient text-white py-20" style="background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="md:flex items-center justify-between">
+      <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Your Mental Wellness Journey Starts Here</h1>
+        <p class="text-xl mb-8 opacity-90">Professional therapists ready to help you navigate life's challenges with compassion and expertise.</p>
+        <a href="{% url 'book' %}" class="bg-white text-indigo-600 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-all inline-flex items-center">
+          Book Session <i data-feather="arrow-right" class="ml-2"></i>
+        </a>
+      </div>
+      <div class="md:w-1/2" data-aos="fade-left">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4" data-aos="fade-up">Our Therapeutic Services</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Specialized care tailored to your unique needs and circumstances.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-50 p-8 rounded-lg transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+          <i data-feather="activity" class="text-indigo-600 w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Cognitive Behavioral Therapy</h3>
+        <p class="text-gray-600">Identify and change negative thought patterns and behaviors that may be causing difficulties.</p>
+      </div>
+
+      <div class="bg-gray-50 p-8 rounded-lg transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+          <i data-feather="users" class="text-indigo-600 w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Couples Counseling</h3>
+        <p class="text-gray-600">Improve communication and resolve conflicts to strengthen your relationship.</p>
+      </div>
+
+      <div class="bg-gray-50 p-8 rounded-lg transition-all hover:-translate-y-1 hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
+        <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+          <i data-feather="smile" class="text-indigo-600 w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Mindfulness Therapy</h3>
+        <p class="text-gray-600">Develop present-moment awareness to reduce stress and increase emotional regulation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-indigo-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4" data-aos="fade-up">What Our Clients Say</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Hear from people who have found support and healing through our services.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white p-8 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="200">
+        <div class="mb-3">
+          <div class="font-medium text-gray-900">Sarah J.</div>
+          <div class="text-indigo-600 text-sm">Anxiety Therapy</div>
+        </div>
+        <p class="text-gray-600">"My therapist helped me develop tools to manage my anxiety that I'll use for the rest of my life."</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="300">
+        <div class="mb-3">
+          <div class="font-medium text-gray-900">Michael T.</div>
+          <div class="text-indigo-600 text-sm">Couples Counseling</div>
+        </div>
+        <p class="text-gray-600">"We communicate better than ever and have rekindled our connection."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-indigo-600 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Ready to Begin Your Healing Journey?</h2>
+    <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90" data-aos="fade-up" data-aos-delay="100">Take the first step toward emotional well-being today.</p>
+    <a href="{% url 'book' %}" class="bg-white text-indigo-600 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-all inline-flex items-center" data-aos="fade-up" data-aos-delay="200">
+      Book Your Session Now <i data-feather="arrow-right" class="ml-2"></i>
+    </a>
+  </div>
+</section>
+{% endblock %}

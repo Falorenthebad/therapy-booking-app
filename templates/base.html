@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Mindful Therapy{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  {% load static %}
+</head>
+<body class="font-sans bg-gray-50">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <i data-feather="heart" class="text-indigo-500 mr-2"></i>
+          <a href="{% url 'home' %}" class="text-xl font-semibold text-gray-900">Mindful Therapy</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="{% url 'home' %}" class="text-gray-500 hover:text-indigo-600 transition-all {% block nav_home %}{% endblock %}">Home</a>
+          <a href="{% url 'book' %}" class="text-gray-500 hover:text-indigo-600 transition-all {% block nav_book %}{% endblock %}">Book</a>
+          <a href="{% url 'appointments' %}" class="text-gray-500 hover:text-indigo-600 transition-all {% block nav_appt %}{% endblock %}">My Appointment</a>
+          <a href="{% url 'book' %}" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-all">Book Now</a>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button class="mobile-menu-button">
+            <i data-feather="menu"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  {% if messages %}
+  <div class="max-w-4xl mx-auto mt-6 px-4">
+    {% for message in messages %}
+      <div class="mb-3 p-3 rounded border 
+                  {% if message.tags == 'error' %}border-red-300 bg-red-50 text-red-800
+                  {% elif message.tags == 'success' %}border-green-300 bg-green-50 text-green-800
+                  {% else %}border-gray-200 bg-white text-gray-800{% endif %}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+
+  <footer class="bg-gray-900 text-white py-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-400">&copy; {{ now|date:"Y" }} Mindful Therapy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>AOS.init();</script>
+  <script>feather.replace();</script>
+  <script>
+    document.querySelector('.mobile-menu-button')?.addEventListener('click', function() {
+      alert('Mobile menu would open here in a full implementation');
+    });
+  </script>
+</body>
+</html>
